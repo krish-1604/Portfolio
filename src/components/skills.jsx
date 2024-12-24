@@ -17,9 +17,9 @@ const Skills = () => {
   return (
     <div className="min-h-screen bg-black px-4 py-12 md:py-0">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-3 gap-12">
           {/* Skills Section */}
-          <div className="bg-[#1E1E1E] rounded-[10px] p-8 shadow-md">
+          <div className="bg-[#1E1E1E] rounded-[10px] p-8 shadow-md col-span-2">
             <h2 className="text-2xl font-bold text-white mb-4">Skills</h2>
             <div className="flex flex-wrap gap-4">
               <img src={python} alt="Python" className="h-10 w-10" />
@@ -36,7 +36,7 @@ const Skills = () => {
           </div>
 
           {/* Social Links Section */}
-          <div className="bg-[#1E1E1E] rounded-[10px] p-8 shadow-md h-full flex justify-center items-center">
+          <div className="bg-[#1E1E1E] rounded-[10px] p-8 shadow-md h-full flex justify-center items-center col-span-1">
             <div className="flex gap-4 md:gap-8 flex-wrap justify-center">
               <a href="https://instagram.com/_krish1604" target="_blank" rel="noopener noreferrer">
                 <img src={instagram} alt="Instagram" className="h-10 w-10" />
