@@ -1,0 +1,19 @@
+.nav-link {
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Mobile menu animation */
+  .mobile-menu {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Optional: Add some smooth transitions */
+  .nav-item {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  
