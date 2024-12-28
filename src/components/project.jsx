@@ -5,7 +5,7 @@ const Project = () => {
   const driveLink = "https://drive.google.com/file/d/1FFe2COLnCVNIWr9xa13g7pPZp1PUrfxT/view";
 
   return (
-    <div id="project" className="min-h-[80vh] md:min-h-[90vh] bg-[#1B1B1B] p-8 rounded-[20px]">
+    <div id="project" className="min-h-[132vh] md:min-h-[92vh] bg-[#1B1B1B] p-8 rounded-[20px]">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto mb-16">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
