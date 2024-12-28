@@ -23,17 +23,16 @@ const Experience = () => {
           <div
             className="bg-[#393939] rounded-3xl p-8 relative transition-transform hover:scale-105 hover:bg-[#505050] duration-300"
           >
-            <h2 className="text-2xl font-cygre text-white mb-6">Flutter Intern</h2>
+            <h2 className="text-5xl font-cygre text-white mb-6">Flutter Intern</h2>
             <hr className="mb-6 border-gray-500" />
             <div>
               <p className="text-white text-[24px]">V4U Technologies</p>
             </div>
           </div>
-          {/* Arrow Icon positioned in curved area */}
           <div
             className="absolute bottom-3 right-3 transform translate-x-[10%] translate-y-[10%] rotate-[-45deg] group-hover:scale-125 transition-transform duration-300"
           >
-            <div className="bg-gray-900 rounded-full p-2">
+            <div className="bg-[#272727] rounded-[40px] border-8 border-[#272727] shadow-[0_0_0_14px_#272727] mt-12">
               <svg
                 className="w-6 h-6 text-white"
                 fill="none"
