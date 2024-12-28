@@ -12,7 +12,7 @@ const Resume = () => {
   };
 
   return (
-    <div id='resume' className="bg-[#1B1B1B] p-8 rounded-[20px]">
+    <div id='resume' className="bg-[#1B1B1B] p-10 rounded-[20px]">
       {/* Header Section */}
       <div className="max-w-6xl mx-auto mb-12">
         <div className="flex justify-between items-start">
