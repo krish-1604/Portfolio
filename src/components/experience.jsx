@@ -4,7 +4,7 @@ const Experience = () => {
   const driveLink = "https://drive.google.com/file/d/1FFe2COLnCVNIWr9xa13g7pPZp1PUrfxT/view";
 
   return (
-    <div id="exp" className="min-h-[60vh] md:min-h-[50vh] bg-[#272727] p-8 rounded-[20px]">
+    <div id="exp" className="min-h-[65vh] md:min-h-[55vh] bg-[#272727] p-8 rounded-[20px]">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto mb-16">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center">

@@ -12,7 +12,7 @@ const Resume = () => {
   };
 
   return (
-    <div id='resume' className="bg-[#1B1B1B] p-10 rounded-[20px]">
+    <div id='resume' className="bg-[#1B1B1B] p-20 rounded-[20px]">
       {/* Header Section */}
       <div className="max-w-6xl mx-auto mb-12">
         <div className="flex justify-between items-start">
@@ -24,13 +24,13 @@ const Resume = () => {
       </div>
 
       {/* Cards Container */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* LinkedIn Card */}
         <a 
           href="https://www.linkedin.com/in/krish-mehta-7a4037252/" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="group bg-[#272727] rounded-xl p-8 min-h-[220px] relative hover:bg-gray-700 transition-all cursor-pointer"
+          className="group bg-[#272727] rounded-xl p-8 min-h-[250px] relative hover:bg-gray-700 transition-all cursor-pointer"
         >
           <h2 className="text-white text-3xl font-bold absolute left-8 bottom-8">LinkedIn</h2>
           <div className="absolute top-8 right-8">
