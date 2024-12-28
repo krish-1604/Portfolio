@@ -36,12 +36,8 @@ const ScrollToSection = () => {
   return (
     <div className="min-h-screen bg-black">
       <Navbar />
-      <main className="container mx-auto px-4 py-8 bg-black">
-        <div className="text-white">
-          <h1 className="text-4xl font-bold mb-4">Welcome</h1>
-          <p className="text-gray-300">Your content goes here</p>
-        </div>
-      </main>
+      {/* <main className="container mx-auto px-4 py-8 bg-black">
+      </main> */}
       <div ref={aboutRef} id="about">
         <About />
       </div>
