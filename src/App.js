@@ -4,11 +4,13 @@ import Navbar from './components/Navbar';
 import About from './components/About';
 import Skills from './components/skills';
 import GetInTouch from './components/footer';
+import Resume from './components/resume';
 
 const ScrollToSection = () => {
   const location = useLocation();
   const aboutRef = useRef(null);
   const skillsRef = useRef(null);
+  const resumeRef = useRef(null);
   const getintouchRef = useRef(null);
 
   React.useEffect(() => {
@@ -16,7 +18,9 @@ const ScrollToSection = () => {
       aboutRef.current?.scrollIntoView({ behavior: 'smooth' });
     } else if (location.hash === '#skills') {
       skillsRef.current?.scrollIntoView({ behavior: 'smooth' });
-    } else if (location.hash === '#contact') {
+    }else if(location.hash === '#resume'){
+      resumeRef.current?.scrollIntoView({behavior:'smooth'});
+    }else if (location.hash === '#contact') {
       getintouchRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [location]);
@@ -35,6 +39,9 @@ const ScrollToSection = () => {
       </div>
       <div ref={skillsRef} id="skills">
         <Skills />
+      </div>
+      <div ref={resumeRef} id="resume">
+      <Resume/>
       </div>
       <div ref={getintouchRef} id="contact">
         <GetInTouch />
