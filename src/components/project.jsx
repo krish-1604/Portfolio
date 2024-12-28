@@ -1,15 +1,15 @@
 import React from 'react';
 
-const Experience = () => {
+const Project = () => {
   const driveLink = "https://drive.google.com/file/d/1FFe2COLnCVNIWr9xa13g7pPZp1PUrfxT/view";
 
   return (
-    <div id="exp" className="min-h-[55vh] md:min-h-[65vh] bg-[#272727] p-8 rounded-[20px]">
+    <div id="project" className="min-h-[55vh] md:min-h-[65vh] bg-[#1B1B1B] p-8 rounded-[20px]">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto mb-16">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 md:mb-0">
-            My <span className="text-orange-500">Experience</span>
+            My <span className="text-orange-500">Projects</span>
           </h1>
         </div>
       </div>
@@ -21,7 +21,7 @@ const Experience = () => {
           className="relative group block"
         >
           <div
-            className="bg-[#393939] rounded-3xl p-8 pb-20 relative transition-transform hover:scale-105 hover:bg-[#505050] duration-300"
+            className="bg-[#272727] rounded-3xl p-8 pb-20 relative transition-transform hover:scale-105 hover:bg-[#505050] duration-300"
           >
             <h2 className="text-5xl font-cygre text-white mb-6">Flutter Intern</h2>
             <hr className="mb-6 border-gray-500" />
@@ -54,4 +54,4 @@ const Experience = () => {
   );
 };
 
-export default Experience;
+export default Project;
