@@ -3,24 +3,28 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Navbar from './components/Navbar';
 import About from './components/About';
 import Skills from './components/skills';
+import GetInTouch from './components/footer';
 
 const ScrollToSection = () => {
   const location = useLocation();
   const aboutRef = useRef(null);
-  const skillsRef = useRef(null); 
+  const skillsRef = useRef(null);
+  const getintouchRef = useRef(null);
 
   React.useEffect(() => {
     if (location.hash === '#about') {
       aboutRef.current?.scrollIntoView({ behavior: 'smooth' });
     } else if (location.hash === '#skills') {
       skillsRef.current?.scrollIntoView({ behavior: 'smooth' });
+    } else if (location.hash === '#contact') {
+      getintouchRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   }, [location]);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: 'rgba(18, 18, 18, 1)' }}>
+    <div className="min-h-screen bg-black">
       <Navbar />
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 bg-black">
         <div className="text-white">
           <h1 className="text-4xl font-bold mb-4">Welcome</h1>
           <p className="text-gray-300">Your content goes here</p>
@@ -31,6 +35,9 @@ const ScrollToSection = () => {
       </div>
       <div ref={skillsRef} id="skills">
         <Skills />
+      </div>
+      <div ref={getintouchRef} id="contact">
+        <GetInTouch />
       </div>
     </div>
   );

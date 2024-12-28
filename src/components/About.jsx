@@ -4,7 +4,7 @@ import '../font.css';
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-black px-4 py-12 md:py-24">
+    <div id='about' className="min-h-screen bg-black px-4 py-12 md:py-24">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-white text-3xl md:text-5xl font-cygre text-center mb-2">
           Have an Awesome Project<br/>Idea?{' '}

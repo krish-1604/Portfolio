@@ -12,6 +12,7 @@ module.exports = {
       fontFamily: {
         'cygre': ['Cygre', 'sans-serif'],
         'nunito': ['Nunito', 'sans-serif'],
+        baseneuetrial: ['BaseNeueTrial', 'sans-serif'],
       },
     },
   },
