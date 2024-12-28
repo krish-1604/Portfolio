@@ -1,9 +1,8 @@
 import React from 'react';
-
 const Resume = () => {
   const handleDownloadPDF = () => {
-    const pdfUrl = '../assets/Krish-Mehta-Resume.pdf';
-    
+    const pdfUrl = '/Krish-Mehta-Resume.pdf';
+
     const link = document.createElement('a');
     link.href = pdfUrl;
     link.download = 'Krish-Mehta-Resume.pdf';
@@ -31,10 +30,10 @@ const Resume = () => {
           href="https://www.linkedin.com/in/krish-mehta-7a4037252/" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="group bg-[#272727] rounded-xl p-8 min-h-[200px] relative hover:bg-gray-700 transition-all cursor-pointer"
+          className="group bg-[#272727] rounded-xl p-8 min-h-[220px] relative hover:bg-gray-700 transition-all cursor-pointer"
         >
-          <h2 className="text-white text-3xl font-bold">LinkedIn</h2>
-          <div className="absolute bottom-8 right-8">
+          <h2 className="text-white text-3xl font-bold absolute left-8 bottom-8">LinkedIn</h2>
+          <div className="absolute top-8 right-8">
             <div className="w-10 h-10 rounded-full border-2 border-orange-500 flex items-center justify-center">
               <svg 
                 className="w-5 h-5 text-orange-500 transform group-hover:translate-x-1 transition-transform" 
@@ -56,10 +55,10 @@ const Resume = () => {
         {/* Download PDF Card */}
         <button 
           onClick={handleDownloadPDF}
-          className="group bg-[#272727] rounded-xl p-8 min-h-[200px] relative hover:bg-black transition-all"
+          className="group bg-[#272727] rounded-xl p-8 min-h-[220px] relative hover:bg-black transition-all"
         >
-          <h2 className="text-white text-3xl font-bold">Download PDF</h2>
-          <div className="absolute bottom-8 right-8">
+          <h2 className="text-white text-3xl font-bold absolute left-8 bottom-8">Download PDF</h2>
+          <div className="absolute top-8 right-8">
             <div className="w-10 h-10 rounded-full border-2 border-orange-500 flex items-center justify-center">
               <svg 
                 className="w-5 h-5 text-orange-500 transform group-hover:translate-y-1 transition-transform" 
