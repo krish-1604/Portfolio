@@ -2,10 +2,10 @@ import React from 'react';
 import memories from '../assets/projects/mymemories.png';
 import assignofast from '../assets/projects/assignofast.png';
 const Project = () => {
-  const driveLink = "https://drive.google.com/file/d/1FFe2COLnCVNIWr9xa13g7pPZp1PUrfxT/view";
-
+  const memorieslink = "https://github.com/krish-1604/My-Memories/blob/master/README.md";
+  const assignofastlink = 'https://play.google.com/store/search?q=assignofast&c=apps&hl=en';
   return (
-    <div id="project" className="min-h-[132vh] md:min-h-[92vh] bg-[#1B1B1B] p-8 rounded-[20px]">
+    <div id="project" className="min-h-[132vh] sm:min-h-[100vh] md:min-h-[92vh] bg-[#1B1B1B] p-8 rounded-[20px]">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto mb-16">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
@@ -16,7 +16,7 @@ const Project = () => {
       </div>
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <a
-          href={driveLink}
+          href={memorieslink}
           target="_blank"
           rel="noopener noreferrer"
           className="relative group block"
@@ -57,7 +57,7 @@ const Project = () => {
           </div>
         </a>
         <a
-          href={driveLink}
+          href={assignofastlink}
           target="_blank"
           rel="noopener noreferrer"
           className="relative group block"
