@@ -44,16 +44,16 @@ const ScrollToSection = () => {
       <div ref={skillsRef} id="skills" className='relative z-0'>
         <Skills />
       </div>
-      <div ref={projectRef} id="project" className="relative z-10 -mt-8">
+      <div ref={projectRef} id="project" className="relative z-10">
         <Project />
       </div>
-      <div ref={experienceRef} id="exp" className="relative z-10 -mt-8">
+      <div ref={experienceRef} id="exp" className="relative z-10">
         <Experience />
       </div>
-      <div ref={resumeRef} id="resume" className="relative z-10 -mt-7">
+      <div ref={resumeRef} id="resume" className="relative z-10">
       <Resume/>
       </div>
-      <div ref={getintouchRef} id="contact" className="relative z-10 -mt-7">
+      <div ref={getintouchRef} id="contact" className="relative z-10">
         <GetInTouch />
       </div>
     </div>

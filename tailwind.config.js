@@ -5,6 +5,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      translate: {
+        '128': '32rem',
+        '160': '40rem',
+      },
+      zIndex: {
+        '60': '60',
+      },
       colors: {
         'nav-dark': '#1E1E1E',
         'nav-orange': '#FF8A52',
