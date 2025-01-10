@@ -7,7 +7,7 @@ const Project = () => {
   const assignofastlink = 'https://play.google.com/store/search?q=assignofast&c=apps&hl=en';
   
   return (
-    <div id="project" className="w-full bg-[#1B1B1B] p-12 rounded-[20px]">
+    <div id="project" className="w-full bg-[#1B1B1B] p-12 rounded-[20px] -mt-8 pb-20">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center">

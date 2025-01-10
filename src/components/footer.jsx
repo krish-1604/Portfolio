@@ -4,7 +4,7 @@ import '../font.css';
 
 const GetInTouch = () => {
   return (
-    <div id='contact' className="bg-black w-full flex items-center justify-center px-4 md:px-16 py-6 md:py-10 rounded-[20px]">
+    <div id='contact' className="bg-black w-full flex items-center justify-center px-4 md:px-16 py-6 md:py-10 rounded-[20px] -mt-8">
         <div className="bg-[#FF8A50] w-full px-3 md:px-5 py-2.5 rounded-[2px]">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-8">

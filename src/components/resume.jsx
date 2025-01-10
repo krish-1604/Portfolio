@@ -12,11 +12,11 @@ const Resume = () => {
   };
 
   return (
-    <div id="resume" className="bg-[#1B1B1B] p-12 rounded-[20px]">
-      <div className="max-w-6xl mx-auto pb-10">
-      <h1 className="text-4xl md:text-5xl font-bold text-white">
-            My <span className="text-orange-500">Resume</span>
-          </h1>
+    <div id="resume" className="bg-[#1B1B1B] p-12 rounded-[20px] -mt-8 pb-20">
+      <div className="max-w-7xl mx-auto pb-10">
+        <h1 className="text-4xl md:text-5xl font-bold text-white">
+          My <span className="text-orange-500">Resume</span>
+        </h1>
       </div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">

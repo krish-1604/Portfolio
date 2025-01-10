@@ -25,7 +25,7 @@ const ScrollingBanner = () => {
   ];
 
   return (
-    <div id="skills" className="relative w-full bg-[#FF6B00] py-12 overflow-hidden rounded-[20px]">
+    <div id="skills" className="relative w-full bg-[#FF6B00] py-12 overflow-hidden rounded-[20px] pb-20">
       <div className="bg-white py-6">
         <div 
           className="flex whitespace-nowrap"
