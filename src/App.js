@@ -38,7 +38,7 @@ const ScrollToSection = () => {
   }, [location]);
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-black pt-20">
       <Navbar />
       {/* <main className="container mx-auto px-4 py-8 bg-black">
       </main> */}

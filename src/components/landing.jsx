@@ -4,7 +4,7 @@ import landingimage from '../assets/landingimage.png';
 const Landing = () => {
   return (
     <div className="bg-black p-4 rounded-[20px]">
-      <div id="landing" className="relative min-h-screen bg-[#1a1a1a] text-white p-12 lg:p-24 rounded-[20px]">
+      <div id="landing" className="relative bg-[#1a1a1a] text-white p-12 rounded-[20px]">
         <nav className="hidden sm:flex flex-col sm:flex-row justify-between items-center pb-12">
           <h1 className="text-2xl font-medium border-b-2 mb-6 sm:mb-0">
             Krish Mehta
@@ -50,7 +50,7 @@ const Landing = () => {
           </div>
         </main>
 
-        <p className="absolute bottom-12 left-12 text-gray-400">
+        <p className="absolute bottom-6 left-6 text-gray-400">
           Available for freelance work
         </p>
       </div>

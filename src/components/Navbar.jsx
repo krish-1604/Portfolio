@@ -97,7 +97,7 @@ const Navbar = () => {
   }, [determineActiveSection]);
 
   return (
-    <nav className="p-4 font-sans bg-black fixed top-0 left-0 w-full z-50">
+    <nav className="p-4 font-sans fixed top-0 left-0 w-full z-50">
       <div className="md:bg-[#1E1E1E] md:p-2 md:rounded-lg">
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center justify-between px-4">
