@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState('Home');
+  const [isScrolling, setIsScrolling] = useState(false);
 
   const navItems = [
     { name: 'Home', href: '#' },
@@ -15,6 +16,7 @@ const Navbar = () => {
   ];
 
   const smoothScroll = (targetPosition, duration = 1500) => {
+    setIsScrolling(true);
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
     let startTime = null;
@@ -33,11 +35,40 @@ const Navbar = () => {
 
       if (timeElapsed < duration) {
         requestAnimationFrame(animation);
+      } else {
+        setIsScrolling(false);
       }
     }
 
     requestAnimationFrame(animation);
   };
+
+  const determineActiveSection = useCallback(() => {
+    if (isScrolling) return;
+
+    const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+    // Check if we're at the top of the page
+    if (scrollPosition < window.innerHeight / 2) {
+      setActiveItem('Home');
+      return;
+    }
+
+    // Check each section
+    for (let i = navItems.length - 1; i >= 0; i--) {
+      const item = navItems[i];
+      if (item.href === '#') continue;
+
+      const element = document.querySelector(item.href);
+      if (element) {
+        const position = element.offsetTop - 100;
+        if (scrollPosition >= position) {
+          setActiveItem(item.name);
+          break;
+        }
+      }
+    }
+  }, [isScrolling]);
 
   const handleNavClick = (itemName, href) => {
     setActiveItem(itemName);
@@ -55,6 +86,15 @@ const Navbar = () => {
       smoothScroll(targetPosition);
     }
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      requestAnimationFrame(determineActiveSection);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [determineActiveSection]);
 
   return (
     <nav className="p-4 font-sans bg-black fixed top-0 left-0 w-full z-50">
