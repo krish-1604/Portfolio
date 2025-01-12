@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState('Home');
-  const [isScrolling, setIsScrolling] = useState(false);
+  const isScrollingRef = useRef(false);
+  const animationFrameRef = useRef(null);
 
   const navItems = [
     { name: 'Home', href: '#' },
@@ -15,8 +16,13 @@ const Navbar = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
-  const smoothScroll = (targetPosition, duration = 1500) => {
-    setIsScrolling(true);
+  const smoothScroll = (targetPosition, duration = 1000) => {
+    // Cancel any ongoing animation
+    if (animationFrameRef.current) {
+      cancelAnimationFrame(animationFrameRef.current);
+    }
+
+    isScrollingRef.current = true;
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
     let startTime = null;
@@ -26,35 +32,35 @@ const Navbar = () => {
       const timeElapsed = currentTime - startTime;
       const progress = Math.min(timeElapsed / duration, 1);
 
-      const ease = (t) =>
-        t < 0.5
-          ? 4 * t * t * t
-          : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+      const ease = (t) => {
+        return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+      };
 
       window.scrollTo(0, startPosition + distance * ease(progress));
 
       if (timeElapsed < duration) {
-        requestAnimationFrame(animation);
+        animationFrameRef.current = requestAnimationFrame(animation);
       } else {
-        setIsScrolling(false);
+        isScrollingRef.current = false;
+        if (animationFrameRef.current) {
+          cancelAnimationFrame(animationFrameRef.current);
+        }
       }
     }
 
-    requestAnimationFrame(animation);
+    animationFrameRef.current = requestAnimationFrame(animation);
   };
 
-  const determineActiveSection = useCallback(() => {
-    if (isScrolling) return;
+  const handleScroll = () => {
+    if (isScrollingRef.current) return;
 
     const scrollPosition = window.scrollY + window.innerHeight / 3;
 
-    // Check if we're at the top of the page
     if (scrollPosition < window.innerHeight / 2) {
       setActiveItem('Home');
       return;
     }
 
-    // Check each section
     for (let i = navItems.length - 1; i >= 0; i--) {
       const item = navItems[i];
       if (item.href === '#') continue;
@@ -68,11 +74,16 @@ const Navbar = () => {
         }
       }
     }
-  }, [isScrolling]);
+  };
 
   const handleNavClick = (itemName, href) => {
     setActiveItem(itemName);
     setIsOpen(false);
+
+    // Cancel any ongoing scroll animation
+    if (animationFrameRef.current) {
+      cancelAnimationFrame(animationFrameRef.current);
+    }
 
     if (href === '#') {
       smoothScroll(0);
@@ -81,20 +92,33 @@ const Navbar = () => {
 
     const element = document.querySelector(href);
     if (element) {
-      const targetPosition =
-        element.getBoundingClientRect().top + window.pageYOffset - 100;
+      const targetPosition = element.getBoundingClientRect().top + window.pageYOffset - 100;
       smoothScroll(targetPosition);
     }
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      requestAnimationFrame(determineActiveSection);
+    let scrollTimeout;
+    
+    const debouncedScroll = () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        if (!isScrollingRef.current) {
+          handleScroll();
+        }
+      }, 100);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [determineActiveSection]);
+    window.addEventListener('scroll', debouncedScroll);
+
+    return () => {
+      window.removeEventListener('scroll', debouncedScroll);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      clearTimeout(scrollTimeout);
+    };
+  }, []);
 
   return (
     <nav className="p-4 font-sans fixed top-0 left-0 w-full z-50">
