@@ -7,9 +7,11 @@ import GetInTouch from './components/footer';
 import Resume from './components/resume';
 import Experience from './components/experience';
 import Project from './components/project';
+import Landing from './components/landing';
 
 const ScrollToSection = () => {
   const location = useLocation();
+  const landingRef = useRef(null);
   const aboutRef = useRef(null);
   const skillsRef = useRef(null);
   const resumeRef = useRef(null);
@@ -18,7 +20,9 @@ const ScrollToSection = () => {
   const getintouchRef = useRef(null);
 
   React.useEffect(() => {
-    if (location.hash === '#about') {
+    if (location.hash === '#landing'){
+      landingRef.current?.scrollIntoView({behavior:'smooth'});
+    }else if (location.hash === '#about') {
       aboutRef.current?.scrollIntoView({ behavior: 'smooth' });
     } else if (location.hash === '#skills') {
       skillsRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -38,10 +42,13 @@ const ScrollToSection = () => {
       <Navbar />
       {/* <main className="container mx-auto px-4 py-8 bg-black">
       </main> */}
-      <div ref={aboutRef} id="about">
+      <div ref={landingRef} id="landing">
+        <Landing/>
+      </div>
+      <div ref={aboutRef} id="about" className='relative z-0'>
         <About />
       </div>
-      <div ref={skillsRef} id="skills" className='relative z-0'>
+      <div ref={skillsRef} id="skills" className='relative z-10'>
         <Skills />
       </div>
       <div ref={projectRef} id="project" className="relative z-10">
