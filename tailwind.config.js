@@ -19,7 +19,8 @@ module.exports = {
       fontFamily: {
         'cygre': ['Cygre', 'sans-serif'],
         'nunito': ['Nunito', 'sans-serif'],
-        baseneuetrial: ['BaseNeueTrial', 'sans-serif'],
+        'baseneuetrial': ['BaseNeueTrial', 'sans-serif'],
+        'georgiaI': ['GeorgiaI', 'serif'],
       },
     },
   },
