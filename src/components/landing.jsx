@@ -45,7 +45,11 @@ const Landing = () => {
             </div>
             
             <div className="ml-auto">
-              <button className="border-2 border-orange-500 bg-[#393939] text-white px-4 py-2 rounded-full hover:bg-orange-500 hover:text-white transition-all flex items-center gap-1">
+              <button className="border-2 border-orange-500 bg-[#393939] text-white px-4 py-2 rounded-full hover:bg-orange-500 hover:text-white transition-all flex items-center gap-1"
+              onClick={() => {
+                                window.location.href = "mailto:krish1604mehta@gmail.com?subject=Interested in Your Work&body=Hi Krish,";
+                            }}
+                            >
                 LET'S TALK 
                 <ArrowUpRight className="w-4 h-4 -mt-1 rotate-12" />
               </button>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { GithubIcon, InstagramIcon, LinkedinIcon } from 'lucide-react';
 import '../font.css';
+import { ArrowUpRight } from 'lucide-react';
 
 const GetInTouch = () => {
   return (
@@ -58,7 +59,7 @@ const GetInTouch = () => {
                             }}
                             >
                             Contact Me
-                            <span className="inline-block transform rotate-45">➣</span>
+                            <ArrowUpRight className="w-4 h-4 -mt-1 rotate-4" />
                         </button>
                     </div>
                 </div>
