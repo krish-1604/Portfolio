@@ -5,7 +5,7 @@ import { ArrowUpRight } from 'lucide-react';
 const Landing = () => {
   return (
     <div className="bg-black p-4 rounded-[20px]">
-      <div id="landing" className="relative bg-[#1a1a1a] text-white px-12 py-8 rounded-[20px]">
+      <div id="landing" className="relative bg-[#1a1a1a] text-white px-4 sm:px-6 md:px-12 py-8 rounded-[20px]">
         <nav className="hidden sm:flex flex-col sm:flex-row justify-between items-center pb-12">
           <div className="relative inline-block">
             <h1 className="text-2xl font-georgia italic">
