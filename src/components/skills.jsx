@@ -13,6 +13,7 @@ import js from "../assets/icons of skills/js.png";
 import react from "../assets/icons of skills/react.png";
 import flutter from "../assets/icons of skills/flutter.png";
 import firebase from "../assets/icons of skills/firebase.png";
+import go from "../assets/icons of skills/GoLang.png";
 
 const ScrollingBanner = () => {
   const content = [
@@ -89,6 +90,7 @@ const Skills = () => {
                   { src: react, alt: "React" },
                   { src: flutter, alt: "Flutter" },
                   { src: firebase, alt: "Firebase" },
+                  {src: go, alt:"GoLang"}
                 ].map((skill, index) => (
                   <div key={index} className="relative group">
                     <img
