@@ -7,8 +7,8 @@ const Landing = () => {
   return (
     <div className="bg-black p-4 rounded-2xl">
       <div id="landing" className="relative bg-[#1a1a1a] text-white px-4 sm:px-6 md:px-12 py-8 rounded-2xl">
-        <nav className="hidden sm:flex flex-col sm:flex-row justify-between items-center pb-8">
-          <div className="relative inline-block">
+        <nav className="hidden sm:flex items-center justify-between pb-8">
+          <div className="relative">
             <h1 className="text-2xl font-serif italic">Krish Mehta</h1>
             <div className="absolute bottom-0 left-0 w-full">
               <svg width="100%" height="8" viewBox="0 0 100 8" preserveAspectRatio="none">
@@ -16,16 +16,18 @@ const Landing = () => {
               </svg>
             </div>
           </div>
-          <div className="flex items-center gap-6">
-            <div className="flex gap-4">
+          
+          <div className="flex justify-center flex-1">
+            <div className="flex gap-4 justify-center">
               <a href="https://www.linkedin.com/in/krish-mehta-7a4037252/" className="hover:text-orange-500 transition-colors flex items-center gap-1">LINKEDIN <ArrowUpRight className="w-4 h-4 rotate-12" /></a>
               <a href="https://www.instagram.com/_krish1604/" className="hover:text-orange-500 transition-colors flex items-center gap-1">INSTAGRAM <ArrowUpRight className="w-4 h-4 rotate-12" /></a>
               <a href="https://github.com/krish-1604" className="hover:text-orange-500 transition-colors flex items-center gap-1">GITHUB <ArrowUpRight className="w-4 h-4 rotate-12" /></a>
             </div>
-            <button className="border-2 border-orange-500 bg-[#393939] text-white px-4 py-2 rounded-full hover:bg-orange-500 transition-all flex items-center gap-1" onClick={() => { window.location.href = "mailto:krish1604mehta@gmail.com?subject=Interested in Your Work&body=Hi Krish,"; }}>
-              LET'S TALK <ArrowUpRight className="w-4 h-4 rotate-12" />
-            </button>
           </div>
+          
+          <button className="border-2 border-orange-500 bg-[#393939] text-white px-4 py-2 rounded-full hover:bg-orange-500 transition-all flex items-center gap-1" onClick={() => { window.location.href = "mailto:krish1604mehta@gmail.com?subject=Interested in Your Work&body=Hi Krish,"; }}>
+            LET'S TALK <ArrowUpRight className="w-4 h-4 rotate-12" />
+          </button>
         </nav>
         <main className="flex flex-col lg:flex-row items-center justify-between gap-6 pt-8">
           <div className="lg:max-w-2xl text-center lg:text-left">
