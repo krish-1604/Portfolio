@@ -6,12 +6,15 @@
     "@babel/preset-env": "^7.26.0",
     "bootstrap": "^5.3.3",
     "cra-template": "1.2.0",
+    "framer-motion": "^12.4.7",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.469.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-intersection-observer": "^9.15.1",
     "react-router-dom": "^7.1.1",
     "react-scripts": "^5.0.1",
+    "react-scroll-parallax": "^3.4.5",
     "web-vitals": "^4.2.4"
   },
   "scripts": {

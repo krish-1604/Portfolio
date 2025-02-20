@@ -27,7 +27,7 @@ const ScrollingBanner = () => {
 
   return (
     <div id="skills" className="relative w-full bg-[#FF6B00] py-12 overflow-hidden rounded-[20px] pb-20">
-      <div className="bg-white py-6">
+      <div className="bg-white">
         <div 
           className="flex whitespace-nowrap"
           style={{
@@ -42,7 +42,7 @@ const ScrollingBanner = () => {
                   <span className="text-black font-sans text-[clamp(1.5rem,4vw,2.5rem)] tracking-tight">
                     {text}
                   </span>
-                  <span className="text-[#FF6B00] mx-4 text-[clamp(1.2rem,3.5vw,2rem)]">
+                  <span className="text-[#FF6B00] mx-4 text-[clamp(1.5rem,4vw,3rem)]">
                     ✦
                   </span>
                 </div>
