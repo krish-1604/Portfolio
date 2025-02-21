@@ -1,48 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { motion, AnimatePresence } from 'framer-motion';
 import profile from '../assets/profile.png';
 import '../font.css';
 
 const About = () => {
-  const [text, setText] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isFrontend, setIsFrontend] = useState(true);
 
-  const fullText = "  I am a pre-final year B.Tech Computer Science student at VIT Vellore, passionate about building user-friendly applications. Proficient in Flutter, ReactJS and NextJS for frontend development, I am expanding my expertise in backend development with Flask and FastAPI. I have successfully developed and deployed mobile apps on the Play Store and App Store. With a strong focus on crafting robust, responsive applications, I thrive in collaborative environments and aim to build innovative solutions that enhance user experiences.";
-
-  const { ref, inView } = useInView({
-    triggerOnce: true, 
-    threshold: 0.3, 
-  });
-
+  // Flip text every 3 seconds
   useEffect(() => {
-    if (!inView) return; 
-
-    let index = 0;
-    setText(""); 
     const interval = setInterval(() => {
-      if (index < fullText.length) {
-        setText((prev) => prev + fullText.charAt(index));
-        index++;
-      } else {
-        clearInterval(interval);
-      }
-    }, 20);
-
+      setIsFrontend((prev) => !prev);
+    }, 3000);
     return () => clearInterval(interval);
-  }, [inView]);
+  }, []);
 
   return (
-    <div ref={ref} id='about' className="min-h-screen bg-black px-4 py-12 md:py-24 flex items-center">
-      <div className="max-w-6xl mx-auto">
-        {/* Heading Animation */}
+    <div id="about" className="min-h-screen bg-black px-5 py-[10vh] flex items-center">
+      <div className="max-w-[90vw] lg:max-w-[70vw] mx-auto">
+        
+        {/* Heading */}
         <motion.h1 
           initial={{ opacity: 0, y: -20 }} 
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-white text-4xl md:text-6xl font-cygre text-center mb-6"
+          className="text-white text-[5vw] md:text-[3.5vw] font-cygre text-center mb-[5vh]"
         >
-          Have an Awesome Project <br />
+          Have an Awesome Project? <br />
           <motion.span 
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
@@ -52,19 +36,18 @@ const About = () => {
             Let's Discuss
           </motion.span>
         </motion.h1>
-        
-        <div className="mt-12 md:mt-24">
+
+        <div className="mt-[8vh] md:mt-[10vh]">
           <motion.div 
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 1 }}
-            className="bg-[#1E1E1E] rounded-[10px] p-8"
+            className="bg-[#1E1E1E] rounded-[1.5vw] p-[5vw] md:p-[4vw]"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-[5vw] md:gap-[3vw] items-center">
               
               {/* Profile Image */}
-              <div className="w-full aspect-square bg-transparent rounded-lg overflow-hidden relative border-4 border-[#ffffff70]">
-                {/* Skeleton Loader */}
+              <div className="w-full aspect-square bg-transparent rounded-lg overflow-hidden relative border-[0.3vw] border-[#ffffff70]">
                 {!isLoaded && (
                   <motion.div 
                     initial={{ opacity: 1 }} 
@@ -81,18 +64,62 @@ const About = () => {
                 />
               </div>
 
-              {/* Typing Effect Text */}
-              <p className="text-white font-nunito text-lg md:text-2xl lg:text-3xl leading-relaxed whitespace-pre-line">
-                {text}
-                <motion.span 
-                  animate={{ opacity: [0, 1, 0] }} 
-                  transition={{ repeat: Infinity, duration: 0.8 }}
-                  className="text-orange-500"
+              {/* Animated Text */}
+              <div className="text-white font-nunito text-[3vw] md:text-[2vw] leading-relaxed">
+                
+                {/* Static Name */}
+                <motion.p 
+                  initial={{ opacity: 0, y: -10 }} 
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1 }}
+                  className="text-[5vh] md:text-[4vh] lg:text-[3vw] font-bold text-orange-500 mb-[4vh]"
                 >
-                  |
-                </motion.span> {/* Blinking cursor */}
-              </p>
+                  I'm Krish Mehta
+                </motion.p>
 
+                {/* Flipping Text */}
+                <div className="h-[9vh] md:h-[6vh] overflow-hidden relative">
+                  <AnimatePresence mode="wait">
+                    <motion.p 
+                      key={isFrontend ? "frontend" : "backend"}
+                      initial={{ opacity: 0, y: 20 }} 
+                      animate={{ opacity: 1, y: 0 }} 
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.8 }}
+                      className="text-[5vw] sm:text-[4vw] md:text-[2.5vw] lg:text-[2vw] font-semibold text-gray-300 mb-[2vh]"
+                    >
+                      {isFrontend ? "Skilled in Frontend" : "Exploring Backend"}
+                    </motion.p>
+                  </AnimatePresence>
+                </div>
+
+                <div className="h-[9vh] md:h-[6vh] overflow-hidden relative">
+                  <AnimatePresence mode="wait">
+                    <motion.p 
+                      key={isFrontend ? "tech1" : "tech2"}
+                      initial={{ opacity: 0, y: 20 }} 
+                      animate={{ opacity: 1, y: 0 }} 
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.8 }}
+                      className="text-[5vw] sm:text-[4vw] md:text-[2.5vw] lg:text-[2vw] font-semibold text-orange-400"
+                    >
+                      {isFrontend ? "Flutter, ReactJS, NextJS" : "Express.js, Flask"}
+                    </motion.p>
+                  </AnimatePresence>
+                </div>
+
+                {/* Final Static Text */}
+                <motion.p 
+                  initial={{ opacity: 0 }} 
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1.5, delay: 1 }}
+                  className="mt-[4vh] sm:mt-[3vh] md:mt-[2vh] text-gray-300 text-[3.5vw] sm:text-[3vw] md:text-[1.5vw] leading-relaxed"
+                >
+                  I have deployed mobile apps on Play Store and App Store, as well as websites,  
+                  focusing on building responsive and user-friendly applications.
+                </motion.p>
+
+              </div>
             </div>
           </motion.div>
         </div>
