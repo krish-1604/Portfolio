@@ -49,12 +49,29 @@ const Project = () => {
             className="group block h-full cursor-pointer"
             onClick={() => navigate(`/project/${project.id}`)}
           >
-            <div className="bg-[#272727] rounded-3xl p-8 transition-transform hover:scale-105 hover:bg-[#505050] duration-300 h-full flex flex-col">
+            <div className="bg-[#272727] rounded-3xl p-8 transition-transform hover:scale-105 hover:bg-[#505050] duration-300 h-full flex flex-col relative">
               <img src={project.image} alt={project.name} className="w-auto h-[124px] object-contain pb-4" />
               <div className="flex-grow space-y-4">
                 <p className="text-white text-[30px]">{project.name}</p>
                 <p className="text-[#F4B98E] text-[16px]">{project.tech}</p>
                 <p className="text-[#8B949E] text-[14px] line-clamp-6">{project.description}</p>
+              </div>
+              <div className="flex justify-end pt-8">
+                <div className="bg-[#1B1B1B] rounded-full p-4 transform rotate-[-45deg] group-hover:scale-125 transition-transform duration-300">
+                  <svg
+                    className="w-6 h-6 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
