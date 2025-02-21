@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import profile from '../assets/profile.png';
 import '../font.css';
@@ -12,8 +12,9 @@ const About = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
-  
-  const textArray = ["I'm Krish Mehta", "App Developer", "Web Developer"];
+
+  const textArray = useMemo(() => ["I'm Krish Mehta", "App Developer", "Web Developer"], []);
+
   const period = 2000; // Pause after typing full text
 
   // Typing animation effect
