@@ -6,6 +6,43 @@ import '../font.css';
 const About = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isFrontend, setIsFrontend] = useState(true);
+  
+  // Typing animation states
+  const [text, setText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(150);
+  
+  const textArray = ["I'm Krish Mehta", "App Developer", "Web Developer"];
+  const period = 2000; // Pause after typing full text
+
+  // Typing animation effect
+  useEffect(() => {
+    const handleTyping = () => {
+      const i = loopNum % textArray.length;
+      const fullText = textArray[i];
+
+      setText(isDeleting 
+        ? fullText.substring(0, text.length - 1) 
+        : fullText.substring(0, text.length + 1)
+      );
+
+      // Set typing speed based on action
+      setTypingSpeed(isDeleting ? 100 : 150);
+
+      // Handle complete typing or deletion
+      if (!isDeleting && text === fullText) {
+        // Pause at the end before deleting
+        setTimeout(() => setIsDeleting(true), period);
+      } else if (isDeleting && text === '') {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, loopNum, textArray, typingSpeed]);
 
   // Flip text every 3 seconds
   useEffect(() => {
@@ -67,18 +104,31 @@ const About = () => {
               {/* Animated Text */}
               <div className="text-white font-nunito text-[3vw] md:text-[2vw] leading-relaxed">
                 
-                {/* Static Name */}
+                {/* Typing Animation Name */}
+                <div className="text-[5vh] md:text-[4vh] lg:text-[3vw] font-semibold text-orange-500 mb-[4vh] h-[5vh] md:h-[6vh]">
+                  <motion.span 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="inline-block"
+                  >
+                    {text}
+                    <span className="inline-block w-[0.1em] h-[0.7em] bg-orange-500 ml-1 animate-blink"></span>
+                  </motion.span>
+                </div>
+                {/* Final Static Text */}
                 <motion.p 
-                  initial={{ opacity: 0, y: -10 }} 
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1 }}
-                  className="text-[5vh] md:text-[4vh] lg:text-[3vw] font-bold text-orange-500 mb-[4vh]"
+                  initial={{ opacity: 0 }} 
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1.5, delay: 1 }}
+                  className="mt-[6vh] sm:mt-[8vh] md:mt-[8vh] text-gray-300 text-[3.5vw] sm:text-[3vw] md:text-[1.5vw] leading-relaxed"
                 >
-                  I'm Krish Mehta
+                  I have deployed mobile apps on Play Store and App Store, as well as websites,  
+                  focusing on building responsive and user-friendly applications.
                 </motion.p>
 
                 {/* Flipping Text */}
-                <div className="h-[9vh] md:h-[6vh] overflow-hidden relative">
+                <div className="mt-[6vh] sm:mt-[8vh] md:mt-[8vh] h-[5vh] sm:h-[9vh] md:h-[6vh] overflow-hidden relative">
                   <AnimatePresence mode="wait">
                     <motion.p 
                       key={isFrontend ? "frontend" : "backend"}
@@ -93,7 +143,7 @@ const About = () => {
                   </AnimatePresence>
                 </div>
 
-                <div className="h-[9vh] md:h-[6vh] overflow-hidden relative">
+                <div className="h-[5vh] sm:h-[9vh] md:h-[6vh] overflow-hidden relative">
                   <AnimatePresence mode="wait">
                     <motion.p 
                       key={isFrontend ? "tech1" : "tech2"}
@@ -108,16 +158,7 @@ const About = () => {
                   </AnimatePresence>
                 </div>
 
-                {/* Final Static Text */}
-                <motion.p 
-                  initial={{ opacity: 0 }} 
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 1.5, delay: 1 }}
-                  className="mt-[4vh] sm:mt-[3vh] md:mt-[2vh] text-gray-300 text-[3.5vw] sm:text-[3vw] md:text-[1.5vw] leading-relaxed"
-                >
-                  I have deployed mobile apps on Play Store and App Store, as well as websites,  
-                  focusing on building responsive and user-friendly applications.
-                </motion.p>
+                
 
               </div>
             </div>
@@ -127,5 +168,7 @@ const About = () => {
     </div>
   );
 };
+
+
 
 export default About;

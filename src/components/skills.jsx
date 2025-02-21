@@ -14,7 +14,8 @@ import react from "../assets/icons of skills/react.png";
 import flutter from "../assets/icons of skills/flutter.png";
 import firebase from "../assets/icons of skills/firebase.png";
 import go from "../assets/icons of skills/GoLang.png";
-
+import ts from "../assets/icons of skills/TypeScript.png";
+import next from "../assets/icons of skills/Next.png";
 const ScrollingBanner = () => {
   const content = [
     "Flutter Dev",
@@ -79,18 +80,20 @@ const Skills = () => {
               <h2 className="text-2xl font-bold text-white mb-4">Skills</h2>
               <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                 {[
-                  { src: python, alt: "Python" },
-                  { src: c, alt: "C" },
-                  { src: cpp, alt: "C++" },
-                  { src: java, alt: "Java" },
-                  { src: mysql, alt: "MySQL" },
-                  { src: html, alt: "HTML" },
-                  { src: css, alt: "CSS" },
-                  { src: js, alt: "JavaScript" },
-                  { src: react, alt: "React" },
-                  { src: flutter, alt: "Flutter" },
-                  { src: firebase, alt: "Firebase" },
-                  {src: go, alt:"GoLang"}
+                   { src: flutter, alt: "Flutter" },
+                   { src: react, alt: "React" },
+                   { src: next, alt: "NextJS" },
+                   { src: html, alt: "HTML" },
+                   { src: css, alt: "CSS" },
+                   { src: js, alt: "JavaScript" },
+                   { src: ts, alt: "TypeScript" },
+                   { src: firebase, alt: "Firebase" },
+                   { src: go, alt: "GoLang" },
+                   { src: java, alt: "Java" },
+                   { src: python, alt: "Python" },
+                   { src: c, alt: "C" },
+                   { src: cpp, alt: "C++" },
+                   { src: mysql, alt: "MySQL" },
                 ].map((skill, index) => (
                   <div key={index} className="relative group">
                     <img
