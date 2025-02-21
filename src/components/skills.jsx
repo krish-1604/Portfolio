@@ -72,7 +72,7 @@ const Skills = () => {
   return (
     <div className="flex flex-col">
       <div className="bg-black px-4 pb-16">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-[90vw] lg:max-w-[70vw] mx-auto">
           {/* Changed grid to flex-col on mobile and grid on larger screens */}
           <div className="flex flex-col md:grid md:grid-cols-3 gap-6 md:gap-12">
             {/* Skills Section - full width on mobile */}
