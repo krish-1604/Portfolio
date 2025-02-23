@@ -17,7 +17,6 @@ const Navbar = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
-  // Previous smooth scroll implementation remains the same
   const smoothScroll = (targetPosition, duration = 1000) => {
     if (animationFrameRef.current) {
       cancelAnimationFrame(animationFrameRef.current);
