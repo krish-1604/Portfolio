@@ -8,6 +8,9 @@ const ProjectDetail = () => {
   const { id } = useParams();
   const project = projectdata.find((project) => project.id === id);
   const [imageOrientations, setImageOrientations] = useState([]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     if (project && project.images) {
