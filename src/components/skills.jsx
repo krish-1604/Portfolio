@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import python from "../assets/icons of skills/python.png";
 import c from "../assets/icons of skills/c.png";
 import java from "../assets/icons of skills/java.png";
@@ -89,6 +89,91 @@ const ScrollingBanner = () => {
   );
 };
 
+const SkillIcon = ({ skill }) => {
+  const [isHovered, setIsHovered] = React.useState(false);
+
+  return (
+    <motion.div 
+      className="relative group"
+      whileHover={{ scale: 1.2 }}
+      whileTap={{ scale: 0.95 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+    >
+      <motion.img
+        src={skill.src}
+        alt={skill.alt}
+        className="h-10 w-10 relative z-10"
+        whileHover={{ rotate: 360 }}
+        transition={{ duration: 0.6 }}
+      />
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className="absolute pointer-events-none bg-gray-800 text-white text-xs px-3 py-2 rounded-md whitespace-nowrap"
+            style={{
+              top: "calc(100% + 10px)",
+              left: "50%",
+              transform: "translateX(-50%)",
+              zIndex: 100,
+            }}
+          >
+            {skill.alt}
+            <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
+
+const SocialIcon = ({ social }) => {
+  const [isHovered, setIsHovered] = React.useState(false);
+
+  return (
+    <motion.a
+      href={social.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="relative group"
+      whileHover={{ scale: 1.2 }}
+      whileTap={{ scale: 0.95 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+    >
+      <motion.img
+        src={social.src}
+        alt={social.alt}
+        className="h-10 w-10 relative z-10"
+        whileHover={{ rotate: 360 }}
+        transition={{ duration: 0.6 }}
+      />
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className="absolute pointer-events-none bg-gray-800 text-white text-xs px-3 py-2 rounded-md whitespace-nowrap"
+            style={{
+              top: "calc(100% + 10px)",
+              left: "50%",
+              transform: "translateX(-50%)",
+              zIndex: 100,
+            }}
+          >
+            {social.alt}
+            <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.a>
+  );
+};
+
 const Skills = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -158,41 +243,7 @@ const Skills = () => {
               <h2 className="text-2xl font-bold text-white mb-4">Skills</h2>
               <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                 {skills.map((skill, index) => (
-                  <motion.div 
-                    key={index} 
-                    className="relative group"
-                    variants={skillVariants}
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <motion.img
-                      src={skill.src}
-                      alt={skill.alt}
-                      className="h-10 w-10 relative z-10"
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                    />
-                    <motion.div 
-                      className="absolute pointer-events-none bg-gray-800 text-white text-xs px-3 py-2 rounded-md whitespace-nowrap"
-                      style={{
-                        top: "calc(100% + 10px)",
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        zIndex: 100,
-                      }}
-                      initial={{ opacity: 0, y: 10, visibility: "hidden" }}
-                      whileHover={{ 
-                        opacity: 1, 
-                        y: 0, 
-                        visibility: "visible",
-                        transition: { duration: 0.2 } 
-                      }}
-                    >
-                      <div className="font-bold">{skill.alt}</div>
-                      <div className="text-gray-300 text-[10px]">{skill.desc}</div>
-                      <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45" />
-                    </motion.div>
-                  </motion.div>
+                  <SkillIcon key={index} skill={skill} />
                 ))}
               </div>
             </motion.div>
@@ -203,44 +254,7 @@ const Skills = () => {
             >
               <div className="flex gap-8 flex-wrap justify-center">
                 {socials.map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative group"
-                    variants={socialVariants}
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <motion.img
-                      src={social.src}
-                      alt={social.alt}
-                      className="h-10 w-10 relative z-10"
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                    />
-                    <motion.div 
-                      className="absolute pointer-events-none bg-gray-800 text-white text-xs px-3 py-2 rounded-md whitespace-nowrap"
-                      style={{
-                        top: "calc(100% + 10px)",
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        zIndex: 100,
-                      }}
-                      initial={{ opacity: 0, y: 10, visibility: "hidden" }}
-                      whileHover={{ 
-                        opacity: 1, 
-                        y: 0, 
-                        visibility: "visible",
-                        transition: { duration: 0.2 } 
-                      }}
-                    >
-                      <div className="font-bold">{social.alt}</div>
-                      <div className="text-gray-300 text-[10px]">{social.desc}</div>
-                      <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45" />
-                    </motion.div>
-                  </motion.a>
+                  <SocialIcon key={index} social={social} />
                 ))}
               </div>
             </motion.div>
@@ -252,4 +266,4 @@ const Skills = () => {
   );
 };
 
-export default Skills;  
+export default Skills;

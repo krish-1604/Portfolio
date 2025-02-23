@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GithubIcon, InstagramIcon, LinkedinIcon, ArrowUpRight, X } from 'lucide-react';
+import { GithubIcon, InstagramIcon, LinkedinIcon, MailIcon, ArrowUpRight, X } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import '../font.css';
 
@@ -146,6 +146,8 @@ const ThankYouModal = ({ isOpen, onClose }) => {
 const GetInTouch = () => {
   const [isContactFormOpen, setIsContactFormOpen] = useState(false);
   const [isThankYouOpen, setIsThankYouOpen] = useState(false);
+  const [showEmail, setShowEmail] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
   const socialLinks = [
     {
@@ -168,6 +170,17 @@ const GetInTouch = () => {
   const handleSubmit = (formData) => {
     setIsContactFormOpen(false);
     setIsThankYouOpen(true);
+  };
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('krish1604mehta@gmail.com')
+      .then(() => {
+        setIsCopied(true);
+        setTimeout(() => setIsCopied(false), 2000); // Reset after 2 seconds
+      })
+      .catch((error) => {
+        console.error('Failed to copy email:', error);
+      });
   };
 
   return (
@@ -248,6 +261,43 @@ const GetInTouch = () => {
                       {social.icon}
                     </motion.a>
                   ))}
+                  <motion.div
+                    className="relative"
+                    onHoverStart={() => setShowEmail(true)}
+                    onHoverEnd={() => setShowEmail(false)}
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    whileHover={{ scale: 1.2, rotate: 5 }}
+                    transition={{ duration: 0.4, delay: 0.6 }}
+                  >
+                    <MailIcon 
+                      size={20}
+                      className="md:w-6 md:h-6 text-black hover:text-white/80 transition-colors cursor-pointer"
+                      onClick={handleCopyEmail}
+                    />
+                    <AnimatePresence>
+                      {showEmail && (
+                        <motion.span
+                          className="absolute right-0 top-8 whitespace-nowrap bg-black text-white px-2 py-1 rounded text-sm"
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                        >
+                          krish1604mehta@gmail.com
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
+                    {isCopied && (
+                      <motion.span
+                        className="absolute right-0 top-8 whitespace-nowrap bg-black text-white px-2 py-1 rounded text-sm"
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                      >
+                        Copied!
+                      </motion.span>
+                    )}
+                  </motion.div>
                 </div>
               </div>         
               <motion.button
