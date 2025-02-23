@@ -9,6 +9,7 @@ import Experience from './components/experience';
 import Project from './components/project';
 import Landing from './components/landing';
 import ProjectDetail from './components/ProjectDetail';
+import AllProjects from './components/allprojects';
 const ScrollToSection = () => {
   const location = useLocation();
   const landingRef = useRef(null);
@@ -72,7 +73,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<ScrollToSection />} />
-        <Route path="/projects" element={<Project />} />
+        <Route path="/projects" element={<AllProjects />} />
         <Route path="/project/:id" element={<ProjectDetail />} />
       </Routes>
     </Router>

@@ -31,7 +31,7 @@ const projects = [
   },
 ];
 
-const Project = () => {
+const AllProjects = () => {
   const navigate = useNavigate();
 
   const containerVariants = {
@@ -96,14 +96,6 @@ const Project = () => {
             />
           </span>
         </h1>
-
-        {/* View All Button */}
-        <button
-          className="text-orange-500 hover:text-white border border-orange-500 hover:bg-orange-500 px-6 py-2 rounded-full text-lg font-semibold ml-6 transition-all duration-300"
-          onClick={() => navigate("/projects")}
-        >
-          View All &gt;
-        </button>
       </motion.div>
 
       
@@ -212,4 +204,4 @@ const Project = () => {
   );
 };
 
-export default Project;
+export default AllProjects;
