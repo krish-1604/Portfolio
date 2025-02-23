@@ -5,7 +5,10 @@ import redicli1 from "../../assets/projects/redicli/redicli1.png";
 import redicli2 from "../../assets/projects/redicli/redicli2.png";
 import redicli3 from "../../assets/projects/redicli/redicli3.png";
 import redicli4 from "../../assets/projects/redicli/redicli4.png";
-
+import assignofast1 from "../../assets/projects/assignofast/assignofast1.jpg";
+import assignofast2 from "../../assets/projects/assignofast/assignofast2.jpg";
+import assignofast3 from "../../assets/projects/assignofast/assignofast3.jpg";
+import assignofast4 from "../../assets/projects/assignofast/assignofast4.jpg";
 const projects = [
     {
       id: "redicli",
@@ -77,19 +80,27 @@ const projects = [
       tech: "Flutter, Node.js, Firebase, SQLite, Kotlin, Swift",
       description: "AssignoFast is a smart assignment management app for students, designed to sync assignment data and timetables from Firebase while supporting offline access using SQLite. Built with Flutter, it features an intuitive UI/UX, optimized performance, and smart notifications to help students stay on track with deadlines. The app also includes a Kotlin-based Android widget for quick timetable updates and a filtering system for easy task management.",
       image: assignofast,
-      images: [],
+      images: [assignofast1,assignofast2,assignofast3,assignofast4],
       demo_video: "https://youtu.be/example-demo",
       features: [
-        "Sync assignments and timetables from Firebase",
-        "Works offline with SQLite for local storage",
-        "Optimized performance with reduced sync time",
-        "Kotlin and Swift based widget for quick timetable updates on homescreen",
+        "Sync assignments from backend and store offline using SQLite",
+        "Add notes to assignments for better tracking",
+        "View assignments offline without an internet connection",
+        "Mark assignments as completed using a slider",
         "Smart notifications for assignment reminders",
+        "Create personal tasks for better organization",
+        "Edit and delete personal tasks as needed",
+        "Receive notifications for personal task reminders",
+        "Stored locally using SQLite (no backend sync)",
+        "Sync timetable from backend and store offline using SQLite",
+        "Kotlin and Swift-based widget for quick timetable updates on the homescreen",
+        "Smart notifications for upcoming classes and events",
+        "Optimized performance with reduced sync time",
         "Refined UI/UX for an intuitive experience",
         "Filter and search assignments easily",
         "Track pending, completed, and upcoming assignments",
         "Auto-sync with minimal battery and data usage"
-      ],
+      ],            
       performance: "Optimized for low-latency data sync, offline access, and battery efficiency.",
       year: 2025,
       duration: "2 Months",

@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Github, ExternalLink, Command, Clock, Calendar, Globe, PlayCircle, Store, Smartphone,Download } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, Command, Clock, Calendar, Globe, PlayCircle, Store, Smartphone, Download } from 'lucide-react';
 import projectdata from "./projectdata";
+
 const ProjectDetail = () => {
   const { id } = useParams();
   const project = projectdata.find((project) => project.id === id);
+  const [imageOrientations, setImageOrientations] = useState([]);
+
+  useEffect(() => {
+    if (project && project.images) {
+      const orientations = project.images.map(img => {
+        const image = new Image();
+        image.src = img;
+        return new Promise((resolve) => {
+          image.onload = () => {
+            resolve(image.width < image.height ? 'vertical' : 'horizontal');
+          };
+        });
+      });
+
+      Promise.all(orientations).then(setImageOrientations);
+    }
+  }, [project]);
 
   const fadeInUp = {
     initial: { y: 20, opacity: 0 },
@@ -123,13 +141,15 @@ const ProjectDetail = () => {
           {/* Left Column */}
           <motion.div className="space-y-8" variants={fadeInUp}>
             {project.images && project.images.length > 0 && (
-              <motion.div className="space-y-4">
+              <motion.div className="grid grid-cols-2 gap-4">
                 {project.images.map((img, index) => (
                   <motion.img 
                     key={index}
                     src={img}
                     alt={`${project.name} screenshot ${index + 1}`}
-                    className="w-full rounded-lg shadow-lg hover:scale-[1.02] transition-transform duration-300"
+                    className={`w-full rounded-lg shadow-lg hover:scale-[1.02] transition-transform duration-300 ${
+                      imageOrientations[index] === 'vertical' ? 'col-span-1' : 'col-span-2'
+                    }`}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.2 }}

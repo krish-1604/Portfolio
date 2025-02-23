@@ -39,7 +39,7 @@ const AllProjects = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.4 // Increased from 0.2
+        staggerChildren: 0.4
       }
     }
   };
@@ -54,8 +54,8 @@ const AllProjects = () => {
       y: 0,
       transition: {
         type: "spring",
-        duration: 1.2, // Increased from 0.8
-        bounce: 0.3 // Added gentle bounce
+        duration: 1.2, 
+        bounce: 0.3 
       }
     }
   };
