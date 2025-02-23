@@ -55,15 +55,6 @@ const About = () => {
 
   return (
     <div id="about" className="min-h-screen bg-black px-5 py-[10vh] flex items-center relative overflow-hidden">
-      {/* Subtle Animated Background */}
-      <motion.div 
-        className="absolute inset-0 z-0"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-[#1E1E1E] to-black animate-gradient-x"></div>
-      </motion.div>
 
       <div className="max-w-[90vw] lg:max-w-[70vw] mx-auto relative z-10">
         
