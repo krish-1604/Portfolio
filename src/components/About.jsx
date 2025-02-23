@@ -54,8 +54,18 @@ const About = () => {
   }, []);
 
   return (
-    <div id="about" className="min-h-screen bg-black px-5 py-[10vh] flex items-center">
-      <div className="max-w-[90vw] lg:max-w-[70vw] mx-auto">
+    <div id="about" className="min-h-screen bg-black px-5 py-[10vh] flex items-center relative overflow-hidden">
+      {/* Subtle Animated Background */}
+      <motion.div 
+        className="absolute inset-0 z-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-[#1E1E1E] to-black animate-gradient-x"></div>
+      </motion.div>
+
+      <div className="max-w-[90vw] lg:max-w-[70vw] mx-auto relative z-10">
         
         {/* Heading */}
         <motion.h1 
@@ -69,7 +79,7 @@ const About = () => {
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             transition={{ duration: 1.5 }}
-            className="text-orange-500"
+            className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-yellow-500"
           >
             Let's Discuss
           </motion.span>
@@ -80,12 +90,15 @@ const About = () => {
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 1 }}
-            className="bg-[#1E1E1E] rounded-[1.5vw] p-[5vw] md:p-[4vw]"
+            className="bg-[#1E1E1E] rounded-[1.5vw] p-[5vw] md:p-[4vw] relative overflow-hidden"
           >
+            {/* Subtle Glow Effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-yellow-500/10 animate-glow opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-[5vw] md:gap-[3vw] items-center">
               
               {/* Profile Image */}
-              <div className="w-full aspect-square bg-transparent rounded-lg overflow-hidden relative border-[0.3vw] border-[#ffffff70]">
+              <div className="w-full aspect-square bg-transparent rounded-lg overflow-hidden relative border-[0.3vw] border-[#ffffff70] hover:border-orange-500 transition-all duration-300">
                 {!isLoaded && (
                   <motion.div 
                     initial={{ opacity: 1 }} 
@@ -97,7 +110,7 @@ const About = () => {
                 <img 
                   src={profile} 
                   alt="Profile"
-                  className="w-full h-full object-cover transition-opacity duration-500"
+                  className="w-full h-full object-cover transition-opacity duration-500 hover:scale-105"
                   onLoad={() => setIsLoaded(true)}
                 />
               </div>
@@ -117,6 +130,7 @@ const About = () => {
                     <span className="inline-block w-[0.1em] h-[0.7em] bg-orange-500 ml-1 animate-blink"></span>
                   </motion.span>
                 </div>
+
                 {/* Final Static Text */}
                 <motion.p 
                   initial={{ opacity: 0 }} 
@@ -158,9 +172,6 @@ const About = () => {
                     </motion.p>
                   </AnimatePresence>
                 </div>
-
-                
-
               </div>
             </div>
           </motion.div>
@@ -169,7 +180,5 @@ const About = () => {
     </div>
   );
 };
-
-
 
 export default About;

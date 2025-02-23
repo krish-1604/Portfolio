@@ -4,33 +4,39 @@ import memories from "../assets/projects/mymemories.png";
 import assignofast from "../assets/projects/assignofast.png";
 import redicli from "../assets/projects/redicli.png";
 
-const projects = {
-  redicli: {
+const projects = [
+  {
+    id: "redicli",
     name: "RediCLI",
     tech: "GoLang, Redis",
     description:
-      "RediCLI is a terminal-based tool designed to help users efficiently manage Redis databases with an interactive interface...",
+      "RediCLI is a powerful terminal-based CLI tool for optimizing Redis performance and managing databases efficiently. Built with Go, it features an interactive TUI, command auto-completion, real-time analytics, and advanced key management with TTL support. It enables seamless data import/export, multi-instance connection handling, and an intuitive color-coded interface for better usability. RediCLI enhances Redis administration with fast execution, efficient filtering, and streamlined database operations.",
     image: redicli,
+    github: "https://github.com/Amrit02102004/RediCLI",
   },
-  assignofast: {
+  {
+    id: "assignofast",
     name: "AssignoFast",
     tech: "Flutter, Node, Firebase",
     description:
-      "A reminder app that syncs assignment data and timetable from Firebase and works offline with SQLite...",
+      "AssignoFast is a productivity tool designed for students to manage assignments and deadlines efficiently. Built with Flutter, it syncs assignment data and timetables from Firebase while supporting offline access via SQLite. The app optimizes performance with reduced sync time, integrates a Kotlin-based Android widget for quick timetable updates, and features smart notifications for assignment reminders. With a refined UI/UX, AssignoFast ensures a seamless and intuitive task management experience.",
     image: assignofast,
+    website: "https://assignofast.ieeecsvit.com",
   },
-  mymemories: {
+  {
+    id: "mymemories",
     name: "My Memories",
     tech: "Flutter",
     description:
-      "App designed to store and organize memories with titles, dates, hashtags, and detailed descriptions...",
+      "My Memories is a user-friendly app designed to help you preserve and organize cherished moments effortlessly. It allows you to add titles, dates, hashtags, and descriptions to memories while supporting picture attachments for a richer experience. With a powerful hashtag-based search and secure local storage using SQLite, My Memories ensures quick access to your data without relying on cloud services. The app provides a seamless and private way to manage and relive your personal memories anytime.",
     image: memories,
+    github: "https://github.com/krish-1604/My-Memories",
   },
-};
+];
 
 const ProjectDetail = () => {
   const { id } = useParams();
-  const project = projects[id];
+  const project = projects.find((project) => project.id === id);
 
   if (!project) {
     return <h2 className="text-white text-center mt-20">Project not found</h2>;
