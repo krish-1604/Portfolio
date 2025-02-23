@@ -9,6 +9,9 @@ import assignofast1 from "../../assets/projects/assignofast/assignofast1.jpg";
 import assignofast2 from "../../assets/projects/assignofast/assignofast2.jpg";
 import assignofast3 from "../../assets/projects/assignofast/assignofast3.jpg";
 import assignofast4 from "../../assets/projects/assignofast/assignofast4.jpg";
+import memories1 from "../../assets/projects/mymemories/mm1.jpg";
+import memories2 from "../../assets/projects/mymemories/mm2.jpg";
+
 const projects = [
     {
       id: "redicli",
@@ -115,6 +118,7 @@ const projects = [
       tech: "Flutter, SQLite",
       description: "My Memories is a user-friendly application designed to help you preserve and organize your cherished memories. With features like hashtag-based search, picture attachments, and local data storage, it provides a seamless way to manage your personal memories securely and efficiently. The app allows users to add titles, dates, hashtags, and descriptions to memories, ensuring quick access and better organization. With secure offline storage using SQLite, My Memories keeps your data private without relying on cloud services.",
       image: memories,
+      images:[memories1,memories2],
       github: "https://github.com/krish-1604/My-Memories",
       features: [
         "Add titles, dates, hashtags, and detailed descriptions to memories",
@@ -124,9 +128,9 @@ const projects = [
         "No internet required—works fully offline"
       ],
       demo_video: "Demo Video",
-      download: "Download APK",
+      download: "https://drive.google.com/file/d/1Zxz7S978vTUzi9kW05BpMT85BfrPnq4t/view?usp=drive_link",
       year: 2024,
-      duration: "3 Weeks",
+      duration: "2 Weeks",
     }
   ];
   

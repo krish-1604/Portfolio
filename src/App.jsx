@@ -10,6 +10,7 @@ import Project from './components/projects folder/project';
 import Landing from './components/landing';
 import ProjectDetail from './components/projects folder/ProjectDetail';
 import AllProjects from './components/projects folder/allprojects';
+import NotFound from './components/NotFound';
 const ScrollToSection = () => {
   const location = useLocation();
   const landingRef = useRef(null);
@@ -75,6 +76,7 @@ const App = () => {
         <Route path="/" element={<ScrollToSection />} />
         <Route path="/projects" element={<AllProjects />} />
         <Route path="/project/:id" element={<ProjectDetail />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
