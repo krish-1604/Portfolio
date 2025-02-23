@@ -72,6 +72,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<ScrollToSection />} />
+        <Route path="/projects" element={<Project />} />
         <Route path="/project/:id" element={<ProjectDetail />} />
       </Routes>
     </Router>

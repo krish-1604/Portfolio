@@ -10,18 +10,8 @@ const projects = [
     id: "redicli",
     name: "RediCLI",
     tech: "GoLang, Redis",
-    description: "RediCLI is a powerful terminal-based CLI tool for optimizing Redis performance and managing databases efficiently...",
+    description:"RediCLI is a powerful terminal-based CLI tool for optimizing Redis performance and managing databases efficiently. Built with Go, it features an interactive TUI, command auto-completion, real-time analytics, and advanced key management with TTL support. It enables seamless data import/export, multi-instance connection handling, and an intuitive color-coded interface for better usability. RediCLI enhances Redis administration with fast execution, efficient filtering, and streamlined database operations.",
     image: redicli,
-    github: "https://github.com/Amrit02102004/RediCLI",
-    features: [
-      "Interactive terminal interface",
-      "Command auto-completion and suggestions",
-      "Built-in analytics dashboard",
-      "Import/Export data from CSV and XLSX files",
-      "Advanced key management with TTL support",
-      "Connection management for multiple Redis instances",
-      "Color-coded interface for better readability"
-    ],
   },
   {
     id: "assignofast",
@@ -30,18 +20,6 @@ const projects = [
     description:
       "AssignoFast is a productivity tool designed for students to manage assignments and deadlines efficiently. Built with Flutter, it syncs assignment data and timetables from Firebase while supporting offline access via SQLite. The app optimizes performance with reduced sync time, integrates a Kotlin-based Android widget for quick timetable updates, and features smart notifications for assignment reminders. With a refined UI/UX, AssignoFast ensures a seamless and intuitive task management experience.",
     image: assignofast,
-    website: "https://assignofast.ieeecsvit.com",
-    features: [
-      "Syncs assignments and timetables from Firebase",
-      "Works offline with SQLite for seamless access",
-      "Optimized performance with reduced sync time",
-      "Kotlin-based Android widget for quick timetable updates",
-      "Smart notifications for assignment reminders",
-      "Refined UI/UX for an intuitive experience",
-      "Filter and search assignments easily",
-      "Track pending, completed, and upcoming assignments",
-      "Auto-sync with minimal battery and data usage"
-  ]
   },
   {
     id: "mymemories",
@@ -50,7 +28,6 @@ const projects = [
     description:
       "My Memories is a user-friendly app designed to help you preserve and organize cherished moments effortlessly. It allows you to add titles, dates, hashtags, and descriptions to memories while supporting picture attachments for a richer experience. With a powerful hashtag-based search and secure local storage using SQLite, My Memories ensures quick access to your data without relying on cloud services. The app provides a seamless and private way to manage and relive your personal memories anytime.",
     image: memories,
-    github: "https://github.com/krish-1604/My-Memories",
   },
 ];
 
@@ -103,10 +80,10 @@ const Project = () => {
       variants={containerVariants}
     >
       <motion.div 
-        className="max-w-7xl mx-auto"
+        className="max-w-7xl mx-auto flex items-center justify-between"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }} // Increased from 0.6
+        transition={{ duration: 1 }}
       >
         <h1 className="text-4xl md:text-5xl font-bold text-white">
           My <span className="text-orange-500 relative">
@@ -115,12 +92,21 @@ const Project = () => {
               className="absolute -bottom-2 left-0 w-full h-1 bg-orange-500"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
-              transition={{ duration: 1, delay: 0.4 }} // Increased from 0.6
+              transition={{ duration: 1, delay: 0.4 }}
             />
           </span>
         </h1>
+
+        {/* View All Button */}
+        <button
+          className="text-orange-500 hover:text-white border border-orange-500 hover:bg-orange-500 px-6 py-2 rounded-full text-lg font-semibold ml-6 transition-all duration-300"
+          onClick={() => navigate("/projects")}
+        >
+          View All &gt;
+        </button>
       </motion.div>
 
+      
       <motion.div 
         className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-8"
         variants={containerVariants}
@@ -221,6 +207,7 @@ const Project = () => {
           </motion.div>
         ))}
       </motion.div>
+
     </motion.div>
   );
 };
