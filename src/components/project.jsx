@@ -168,7 +168,7 @@ const Project = () => {
                   {project.name}
                 </motion.p>
                 <motion.p 
-                  className="text-[#F4B98E] text-[16px]"
+                  className="text-orange-500 text-[16px]"
                   initial={{ y: 20, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.8, delay: index * 0.2 + 0.2 }}
