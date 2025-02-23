@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,8 +17,8 @@ const Navbar = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
+  // Previous smooth scroll implementation remains the same
   const smoothScroll = (targetPosition, duration = 1000) => {
-    // Cancel any ongoing animation
     if (animationFrameRef.current) {
       cancelAnimationFrame(animationFrameRef.current);
     }
@@ -32,9 +33,7 @@ const Navbar = () => {
       const timeElapsed = currentTime - startTime;
       const progress = Math.min(timeElapsed / duration, 1);
 
-      const ease = (t) => {
-        return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-      };
+      const ease = (t) => t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
 
       window.scrollTo(0, startPosition + distance * ease(progress));
 
@@ -80,7 +79,6 @@ const Navbar = () => {
     setActiveItem(itemName);
     setIsOpen(false);
 
-    // Cancel any ongoing scroll animation
     if (animationFrameRef.current) {
       cancelAnimationFrame(animationFrameRef.current);
     }
@@ -120,68 +118,150 @@ const Navbar = () => {
     };
   }, []);
 
+  const navVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.3 }
+    },
+    hover: {
+      scale: 1.05,
+      transition: { duration: 0.2 }
+    }
+  };
+
+  const menuButtonVariants = {
+    open: { rotate: 180 },
+    closed: { rotate: 0 }
+  };
+
+  const mobileMenuVariants = {
+    hidden: { opacity: 0, scale: 0.95, y: -20 },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      y: 0,
+      transition: { 
+        duration: 0.3,
+        staggerChildren: 0.1
+      }
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.95,
+      y: -20,
+      transition: { duration: 0.2 }
+    }
+  };
+
   return (
-    <nav className="p-4 font-sans fixed top-0 left-0 w-full z-50">
-      <div className="md:bg-[#1E1E1E] md:p-2 md:rounded-lg">
+    <motion.nav 
+      className="p-4 font-sans fixed top-0 left-0 w-full z-50"
+      initial="hidden"
+      animate="visible"
+      variants={navVariants}
+    >
+      <div className="md:bg-[#1E1E1E] md:p-2 md:rounded-lg backdrop-blur-lg bg-opacity-90">
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center justify-between px-4">
           {navItems.map((item) => (
-            <a
+            <motion.a
               key={item.name}
               href={item.href}
               onClick={(e) => {
                 e.preventDefault();
                 handleNavClick(item.name, item.href);
               }}
-              className={`px-6 py-2 transition-transform transform hover:scale-105 duration-300 ${
+              className={`px-6 py-2 relative ${
                 activeItem === item.name
-                  ? 'bg-[#FF8A52] text-white border border-[#FF8A52] rounded-lg'
+                  ? 'text-white'
                   : 'text-white hover:text-[#FF8A52]'
               }`}
+              variants={itemVariants}
+              whileHover="hover"
             >
               {item.name}
-            </a>
+              {activeItem === item.name && (
+                <motion.div
+                  layoutId="activeIndicator"
+                  className="absolute inset-0 bg-[#FF8A52] rounded-lg -z-10"
+                  initial={false}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+            </motion.a>
           ))}
         </div>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex justify-between items-center">
-          <button
+          <motion.button
             onClick={() => setIsOpen(!isOpen)}
             className="text-white p-2 flex items-center justify-center w-10 h-10 fixed top-4 left-4 z-50 bg-black rounded-md shadow-lg"
+            animate={isOpen ? "open" : "closed"}
+            variants={menuButtonVariants}
           >
-            <div className="w-6 h-6 flex flex-col justify-between">
-              <span className="block w-6 h-0.5 bg-white"></span>
-              <span className="block w-6 h-0.5 bg-white"></span>
-              <span className="block w-6 h-0.5 bg-white"></span>
-            </div>
-          </button>
+            <motion.div className="w-6 h-6 flex flex-col justify-between">
+              <motion.span 
+                className="block w-6 h-0.5 bg-white"
+                animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+              />
+              <motion.span 
+                className="block w-6 h-0.5 bg-white"
+                animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+              />
+              <motion.span 
+                className="block w-6 h-0.5 bg-white"
+                animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+              />
+            </motion.div>
+          </motion.button>
 
           {/* Mobile Menu Dropdown */}
-          {isOpen && (
-            <div className="absolute top-16 left-4 bg-black border border-gray-800 rounded-lg shadow-lg transition-all duration-300 ease-in-out z-40">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(item.name, item.href);
-                  }}
-                  className={`block px-4 py-3 text-lg transition-transform transform hover:scale-105 duration-300 ${
-                    activeItem === item.name
-                      ? 'text-[#FF8A52]'
-                      : 'text-white hover:text-[#FF8A52]'
-                  }`}
-                >
-                  {item.name}
-                </a>
-              ))}
-            </div>
-          )}
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                className="absolute top-16 left-4 bg-black border border-gray-800 rounded-lg shadow-lg z-40"
+                variants={mobileMenuVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                {navItems.map((item) => (
+                  <motion.a
+                    key={item.name}
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item.name, item.href);
+                    }}
+                    className={`block px-4 py-3 text-lg ${
+                      activeItem === item.name
+                        ? 'text-[#FF8A52]'
+                        : 'text-white hover:text-[#FF8A52]'
+                    }`}
+                    variants={itemVariants}
+                    whileHover="hover"
+                  >
+                    {item.name}
+                  </motion.a>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
