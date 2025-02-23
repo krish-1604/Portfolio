@@ -193,7 +193,9 @@ const Project = () => {
                 }}
               >
                 <motion.div 
-                  className="bg-[#1B1B1B] rounded-full p-4 transform rotate-[-45deg]"
+                  className="bg-[#1B1B1B] rounded-full p-4"
+                  initial={{ rotate: -45 }}
+                  animate={{ rotate: -45 }} 
                   whileHover={{ 
                     rotate: 0,
                     backgroundColor: "#FF6B00",
