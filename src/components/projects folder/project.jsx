@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import memories from "../assets/projects/mymemories/mymemories.png";
-import assignofast from "../assets/projects/assignofast/assignofast.png";
-import redicli from "../assets/projects/redicli/redicli.png";
+import memories from "../../assets/projects/mymemories/mymemories.png";
+import assignofast from "../../assets/projects/assignofast/assignofast.png";
+import redicli from "../../assets/projects/redicli/redicli.png";
 
 const projects = [
   {
@@ -31,7 +31,7 @@ const projects = [
   },
 ];
 
-const AllProjects = () => {
+const Project = () => {
   const navigate = useNavigate();
 
   const containerVariants = {
@@ -96,6 +96,14 @@ const AllProjects = () => {
             />
           </span>
         </h1>
+
+        {/* View All Button */}
+        <button
+          className="text-orange-500 hover:text-white border border-orange-500 hover:bg-orange-500 px-6 py-2 rounded-full text-lg font-semibold ml-6 transition-all duration-300"
+          onClick={() => navigate("/projects")}
+        >
+          View All &gt;
+        </button>
       </motion.div>
 
       
@@ -204,4 +212,4 @@ const AllProjects = () => {
   );
 };
 
-export default AllProjects;
+export default Project;

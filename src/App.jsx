@@ -6,10 +6,10 @@ import Skills from './components/skills';
 import GetInTouch from './components/footer';
 import Resume from './components/resume';
 import Experience from './components/experience';
-import Project from './components/project';
+import Project from './components/projects folder/project';
 import Landing from './components/landing';
-import ProjectDetail from './components/ProjectDetail';
-import AllProjects from './components/allprojects';
+import ProjectDetail from './components/projects folder/ProjectDetail';
+import AllProjects from './components/projects folder/allprojects';
 const ScrollToSection = () => {
   const location = useLocation();
   const landingRef = useRef(null);
