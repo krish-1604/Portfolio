@@ -15,17 +15,17 @@ const GetInTouch = () => {
 
   const socialLinks = [
     {
-      icon: <InstagramIcon size={20} className="md:w-6 md:h-6" />,
+      icon: <InstagramIcon size={20} className="md:w-8 md:h-8" />,
       url: "https://www.instagram.com/_krish1604/",
       delay: 0.3
     },
     {
-      icon: <LinkedinIcon size={20} className="md:w-6 md:h-6" />,
+      icon: <LinkedinIcon size={20} className="md:w-8 md:h-8" />,
       url: "https://www.linkedin.com/in/krish-mehta-7a4037252/",
       delay: 0.4
     },
     {
-      icon: <GithubIcon size={20} className="md:w-6 md:h-6" />,
+      icon: <GithubIcon size={20} className="md:w-8 md:h-8" />,
       url: "https://github.com/krish-1604",
       delay: 0.5
     }
@@ -153,7 +153,7 @@ const GetInTouch = () => {
                   >
                     <MailIcon 
                       size={20}
-                      className="md:w-6 md:h-6 text-black hover:text-white/80 transition-colors cursor-pointer"
+                      className="md:w-8 md:h-8 text-black hover:text-white/80 transition-colors cursor-pointer"
                       onClick={handleCopyEmail}
                     />
                     {(showEmail || isCopied) && (
