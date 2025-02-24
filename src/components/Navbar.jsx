@@ -201,7 +201,7 @@ const Navbar = () => {
         {/* Mobile Menu Button - Now consistently white */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="fixed top-6 left-4 z-50 p-3 bg-[#1E1E1E] rounded-md"
+          className="fixed top-6 left-4 z-50 p-4pa bg-[#1E1E1E] rounded-md"
         >
           <div className="w-6 h-6 flex flex-col justify-between">
             <span className={`block w-6 h-0.5 bg-white transform transition-transform ${isOpen ? 'rotate-45 translate-y-2.5' : ''}`} />
