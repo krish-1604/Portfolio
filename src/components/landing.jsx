@@ -180,7 +180,7 @@ const Landing = () => {
 
   return (
     <motion.div 
-      className="bg-black p-4 rounded-2xl"
+      className="bg-black px-4 py-3 rounded-2xl"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
