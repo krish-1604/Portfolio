@@ -158,7 +158,7 @@ const Navbar = () => {
 
   return (
     <motion.nav 
-      className="p-4 font-sans fixed top-0 left-0 w-full z-50"
+      className="p-4 font-cygre fixed top-0 left-0 w-full z-50"
       initial="hidden"
       animate="visible"
       variants={navVariants}
@@ -229,7 +229,7 @@ const Navbar = () => {
                       e.preventDefault();
                       handleNavClick(item.name, item.href);
                     }}
-                    className={`text-xl font-medium my-4 ${
+                    className={`text-3xl font-700 my-2 ${
                       activeItem === item.name
                         ? 'text-[#FF8A52]'  // Only active item is orange
                         : 'text-white hover:text-white'  // Others stay white
