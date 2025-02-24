@@ -8,7 +8,7 @@ const Navbar = () => {
   const animationFrameRef = useRef(null);
 
   const navItems = [
-    { name: 'Home', href: '#' },
+    { name: 'Home', href: '' },
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#project' },
@@ -139,27 +139,20 @@ const Navbar = () => {
     }
   };
 
-  const menuButtonVariants = {
-    open: { rotate: 180 },
-    closed: { rotate: 0 }
-  };
-
-  const mobileMenuVariants = {
-    hidden: { opacity: 0, scale: 0.95, y: -20 },
-    visible: { 
-      opacity: 1, 
-      scale: 1, 
-      y: 0,
-      transition: { 
+  const menuVariants = {
+    closed: {
+      x: "-100%",
+      transition: {
         duration: 0.3,
-        staggerChildren: 0.1
+        ease: "easeInOut"
       }
     },
-    exit: {
-      opacity: 0,
-      scale: 0.95,
-      y: -20,
-      transition: { duration: 0.2 }
+    open: {
+      x: 0,
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
     }
   };
 
@@ -170,9 +163,9 @@ const Navbar = () => {
       animate="visible"
       variants={navVariants}
     >
-      <div className="md:bg-[#1E1E1E] md:p-2 md:rounded-lg backdrop-blur-lg bg-opacity-90">
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center justify-between px-4">
+      {/* Desktop Navigation */}
+      <div className="hidden lg:block md:bg-[#1E1E1E] md:p-2 md:rounded-lg backdrop-blur-lg bg-opacity-90">
+        <div className="flex items-center justify-between px-4">
           {navItems.map((item) => (
             <motion.a
               key={item.name}
@@ -201,42 +194,34 @@ const Navbar = () => {
             </motion.a>
           ))}
         </div>
+      </div>
 
-        {/* Mobile Menu Button */}
-        <div className="md:hidden flex justify-between items-center">
-          <motion.button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-white p-2 flex items-center justify-center w-10 h-10 fixed top-4 left-4 z-50 bg-black rounded-md shadow-lg"
-            animate={isOpen ? "open" : "closed"}
-            variants={menuButtonVariants}
-          >
-            <motion.div className="w-6 h-6 flex flex-col justify-between">
-              <motion.span 
-                className="block w-6 h-0.5 bg-white"
-                animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-              />
-              <motion.span 
-                className="block w-6 h-0.5 bg-white"
-                animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-              />
-              <motion.span 
-                className="block w-6 h-0.5 bg-white"
-                animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-              />
-            </motion.div>
-          </motion.button>
+      {/* Mobile Navigation */}
+      <div className="lg:hidden">
+        {/* Mobile Menu Button - Now consistently white */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="fixed top-4 left-4 z-50 p-2 bg-[#1E1E1E] rounded-md"
+        >
+          <div className="w-6 h-6 flex flex-col justify-between">
+            <span className={`block w-6 h-0.5 bg-white transform transition-transform ${isOpen ? 'rotate-45 translate-y-2.5' : ''}`} />
+            <span className={`block w-6 h-0.5 bg-white transition-opacity ${isOpen ? 'opacity-0' : ''}`} />
+            <span className={`block w-6 h-0.5 bg-white transform transition-transform ${isOpen ? '-rotate-45 -translate-y-2.5' : ''}`} />
+          </div>
+        </button>
 
-          {/* Mobile Menu Dropdown */}
-          <AnimatePresence>
-            {isOpen && (
-              <motion.div
-                className="absolute top-16 left-4 bg-black border border-gray-800 rounded-lg shadow-lg z-40"
-                variants={mobileMenuVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-              >
-                {navItems.map((item) => (
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              className="fixed top-0 left-0 h-screen w-64 bg-[#1E1E1E] z-40"
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={menuVariants}
+            >
+              <div className="flex flex-col items-start p-8 pt-20">
+                {navItems.map((item, index) => (
                   <motion.a
                     key={item.name}
                     href={item.href}
@@ -244,21 +229,32 @@ const Navbar = () => {
                       e.preventDefault();
                       handleNavClick(item.name, item.href);
                     }}
-                    className={`block px-4 py-3 text-lg ${
+                    className={`text-xl font-medium my-4 ${
                       activeItem === item.name
-                        ? 'text-[#FF8A52]'
-                        : 'text-white hover:text-[#FF8A52]'
+                        ? 'text-[#FF8A52]'  // Only active item is orange
+                        : 'text-white hover:text-white'  // Others stay white
                     }`}
                     variants={itemVariants}
+                    initial="hidden"
+                    animate="visible"
                     whileHover="hover"
+                    transition={{ delay: index * 0.1 }}
                   >
                     {item.name}
+                    {activeItem === item.name && (
+                      <motion.div
+                        layoutId="mobileActiveIndicator"
+                        className="absolute inset-0 opacity-10 rounded-lg -z-10"
+                        initial={false}
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
+                    )}
                   </motion.a>
                 ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.nav>
   );
